@@ -1,167 +1,27 @@
-    - type: custom:dwains-flexbox-card
-      padding: false
-      items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
-      cards:
-        - type: weather-forecast
-          entity: weather.openweathermap
-##--------------------------------------------------------
-    - type: custom:dwains-flexbox-card
-      padding: false
-      items_classes: 'col-xs-4 col-sm-4 col-md-4 col-lg-4'
-      cards:
-##--------------------------------------------------------
-        - type: custom:button-card
-          show_state: true
-          entity: light.lasse_nachtlicht
-          state:
-            - value: 'off'
-              styles:
-                icon:
-                 - color: var(--dwains-theme-off)
-            - value: 'unavailable'
-              styles:
-                icon:
-                 - color: var(--dwains-theme-unavailable)
-          styles:
-            state:
-             - font-size: 13px
-             - color: var(--dwains-theme-accent)
-          template: homepage_device
-##--------------------------------------------------------
-        - type: custom:button-card
-          entity: light.dimmable_light_1_2
-          state:
-            - value: 'off'
-              styles:
-                icon:
-                 - color: var(--dwains-theme-off)
-            - value: 'unavailable'
-              styles:
-                icon:
-                 - color: var(--dwains-theme-unavailable)
-          show_state: true
-          styles:
-            state:
-             - font-size: 13px
-             - color: var(--dwains-theme-accent)
-          template: homepage_room
-##--------------------------------------------------------
-        - type: custom:button-card
-          entity: light.kissen
-          state:
-            - value: 'off'
-              styles:
-                icon:
-                 - color: var(--dwains-theme-off)
-            - value: 'unavailable'
-              styles:
-                icon:
-                 - color: var(--dwains-theme-unavailable)
-          show_state: true
-          styles:
-            state:
-             - font-size: 13px
-             - color: var(--dwains-theme-accent)
-          template: homepage_room
-##--------------------------------------------------------
-    - type: custom:dwains-flexbox-card
-      padding: false
-      items_classes: 'col-xs-6 col-sm-6 col-md-6 col-lg-6'
-      cards:
-        - type: custom:button-card
-          show_state: true
-          entity: cover.rolladen_lasse
-          styles:
-            icon:
-             - color: var(--dwains-theme-accent)
-             - height: 150px
-             - width: 150px
-             - primary: var(--dwains-theme-accent)
-             - secondary: var(--dwains-theme-primary)
-            state:
-             - font-size: 13px
-             - color: var(--dwains-theme-accent)
-          template: homepage_device
-        - type: custom:button-card
-          entity: cover.rolladen_jill
-          show_state: true
-          styles:
-            icon:
-             - color: var(--dwains-theme-accent)
-             - height: 150px
-             - width: 150px
-             - primary: var(--dwains-theme-accent)
-             - secondary: var(--dwains-theme-primary)
-            state:
-             - font-size: 13px
-             - color: var(--dwains-theme-accent)
-          template: homepage_room
-##--------------------------------------------------------
-    - type: custom:dwains-flexbox-card
-      padding: false
-      items_classes: 'col-xs-4 col-sm-4 col-md-4 col-lg-4'
-      cards:
-        - type: custom:button-card
-          show_state: true
-          entity: light.color_temperature_light_1
-          state:
-            - value: 'off'
-              styles:
-                icon:
-                 - color: var(--dwains-theme-off)
-            - value: 'unavailable'
-              styles:
-                icon:
-                 - color: var(--dwains-theme-unavailable)
-          styles:
-            state:
-             - font-size: 13px
-             - color: var(--dwains-theme-accent)
-          template: homepage_device
-##--------------------------------------------------------
-        - type: custom:button-card
-          entity: light.gallery
-          state:
-            - value: 'off'
-              styles:
-                icon:
-                 - color: var(--dwains-theme-off)
-            - value: 'unavailable'
-              styles:
-                icon:
-                 - color: var(--dwains-theme-unavailable)
-          show_state: true
-          styles:
-            state:
-             - font-size: 13px
-             - color: var(--dwains-theme-accent)
-          template: homepage_room
-##--------------------------------------------------------
-        - type: custom:button-card
-          entity: switch.shelly_fakebutton_3
-          state:
-            - value: 'off'
-              styles:
-                icon:
-                 - color: var(--dwains-theme-off)
-            - value: 'unavailable'
-              styles:
-                icon:
-                 - color: var(--dwains-theme-unavailable)
-          show_state: true
-          styles:
-            state:
-             - font-size: 13px
-             - color: var(--dwains-theme-accent)
-          template: homepage_room
-##--------------------------------------------------------          
-    - type: custom:dwains-flexbox-card
-      padding: false
-      items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
-      cards:
+## Created by LRvdLinden
+## More-page add-on: Climate Control
+## Version: 1.0.3
+## https://github.com/LRvdLinden
+
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-6 col-sm-6 col-md-3'
+  cards:
+## Lasse Heizung
+      - cards:
+          - name: Lasse
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - cards:
               - entities:
-                  - entity: sensor.average_og_temperatur
-                    name: Obergeschoss
+                  - entity: sensor.wohnzimmer_innentemperatur
+                    name: Temperatuur (24h)
                     color: 'var(--dwains-theme-accent)'
                     show_fill: true
                 font_size: 80
@@ -172,12 +32,587 @@
                 decimals: 0
                 show:
                   animate: true
-                  icon: true
+#                  fill: true
+                  icon: false
                   labels: false
                   legend: false
-                  name: true
+                  name: false
                   graph: line
-                  extrema: false
-                  average: false  
+                  extrema: true
+                  average: true     
                 theme: ios-dark-mode-blue-red
                 type: 'custom:mini-graph-card'
+              - aspect_ratio: 1/1
+                color: 'rgb(41, 158, 194)'
+                entity: climate.lasse_heizung
+                icon: 'hass:thermostat'
+                name: Lasse Heizung
+                show_state: true
+                size: 30%
+                state:
+                  - color: 'var(-- state-icon-active-color)'
+                    value: 'off'
+                  - color: 'var(--state-icon-color)'
+                    value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
+                styles:
+                  name:
+                    - text-transform: uppercase
+                    - font-size: 10px
+                  state:
+                    - text-transform: uppercase
+                    - font-size: 15px
+                    - font: bold
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+## Rasmus Heizung
+      - cards:
+          - name: Rasmus
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - cards:
+              - entities:
+                  - entity: sensor.rasmus_innentemperatur
+                    name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                font_size: 80
+                hours_to_show: 24
+                line_width: 2
+                hour24: true
+                points_per_hour: 2
+                decimals: 0
+                show:
+                  animate: true
+#                  fill: true
+                  icon: false
+                  labels: false
+                  legend: false
+                  name: false
+                  graph: line
+                  extrema: true
+                  average: true     
+                theme: ios-dark-mode-blue-red
+                type: 'custom:mini-graph-card'
+              - aspect_ratio: 1/1
+                color: 'rgb(41, 158, 194)'
+                entity: climate.rasmus_heizung
+                icon: 'hass:thermostat'
+                name: Rasmus Heizung
+                show_state: true
+                size: 30%
+                state:
+                  - color: 'var(-- state-icon-active-color)'
+                    value: 'off'
+                  - color: 'var(--state-icon-color)'
+                    value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
+                styles:
+                  name:
+                    - text-transform: uppercase
+                    - font-size: 10px
+                  state:
+                    - text-transform: uppercase
+                    - font-size: 15px
+                    - font: bold
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+## Kueche Heizung
+      - cards:
+          - name: Kueche
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - cards:
+              - entities:
+                  - entity: sensor.heizung_kueche_innentemperatur
+                    name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                font_size: 80
+                hours_to_show: 24
+                line_width: 2
+                hour24: true
+                points_per_hour: 2
+                decimals: 0
+                show:
+                  animate: true
+#                  fill: true
+                  icon: false
+                  labels: false
+                  legend: false
+                  name: false
+                  graph: line
+                  extrema: true
+                  average: true     
+                theme: ios-dark-mode-blue-red
+                type: 'custom:mini-graph-card'
+              - aspect_ratio: 1/1
+                color: 'rgb(41, 158, 194)'
+                entity: climate.kueche_heizung
+                icon: 'hass:thermostat'
+                name: Kueche Heizung
+                show_state: true
+                size: 30%
+                state:
+                  - color: 'var(-- state-icon-active-color)'
+                    value: 'off'
+                  - color: 'var(--state-icon-color)'
+                    value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
+                styles:
+                  name:
+                    - text-transform: uppercase
+                    - font-size: 10px
+                  state:
+                    - text-transform: uppercase
+                    - font-size: 15px
+                    - font: bold
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+## Flur o Heizung
+      - cards:
+          - name: Flur oben
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - cards:
+              - entities:
+                  - entity: sensor.flur_oben_innentemperatur
+                    name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                font_size: 80
+                hours_to_show: 24
+                line_width: 2
+                hour24: true
+                points_per_hour: 2
+                decimals: 0
+                show:
+                  animate: true
+#                  fill: true
+                  icon: false
+                  labels: false
+                  legend: false
+                  name: false
+                  graph: line
+                  extrema: true
+                  average: true     
+                theme: ios-dark-mode-blue-red
+                type: 'custom:mini-graph-card'
+              - aspect_ratio: 1/1
+                color: 'rgb(41, 158, 194)'
+                entity: climate.flur_oben_heizung
+                icon: 'hass:thermostat'
+                name: Flur oben Heizung
+                show_state: true
+                size: 30%
+                state:
+                  - color: 'var(-- state-icon-active-color)'
+                    value: 'off'
+                  - color: 'var(--state-icon-color)'
+                    value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
+                styles:
+                  name:
+                    - text-transform: uppercase
+                    - font-size: 10px
+                  state:
+                    - text-transform: uppercase
+                    - font-size: 15px
+                    - font: bold
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+## Flur unten Heizung
+      - cards:
+          - name: Flur unten
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - cards:
+              - entities:
+                  - entity: sensor.flur_unten_innentemperatur
+                    name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                font_size: 80
+                hours_to_show: 24
+                line_width: 2
+                hour24: true
+                points_per_hour: 2
+                decimals: 0
+                show:
+                  animate: true
+#                  fill: true
+                  icon: false
+                  labels: false
+                  legend: false
+                  name: false
+                  graph: line
+                  extrema: true
+                  average: true     
+                theme: ios-dark-mode-blue-red
+                type: 'custom:mini-graph-card'
+              - aspect_ratio: 1/1
+                color: 'rgb(41, 158, 194)'
+                entity: climate.flur_unten_heizung
+                icon: 'hass:thermostat'
+                name: Flur unten Heizung
+                show_state: true
+                size: 30%
+                state:
+                  - color: 'var(-- state-icon-active-color)'
+                    value: 'off'
+                  - color: 'var(--state-icon-color)'
+                    value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
+                styles:
+                  name:
+                    - text-transform: uppercase
+                    - font-size: 10px
+                  state:
+                    - text-transform: uppercase
+                    - font-size: 15px
+                    - font: bold
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+## Harvey Heizung
+      - cards:
+          - name: Harvey
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - cards:
+              - entities:
+                  - entity: sensor.harvey_innentemperatur
+                    name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                font_size: 80
+                hours_to_show: 24
+                line_width: 2
+                hour24: true
+                points_per_hour: 2
+                decimals: 0
+                show:
+                  animate: true
+#                  fill: true
+                  icon: false
+                  labels: false
+                  legend: false
+                  name: false
+                  graph: line
+                  extrema: true
+                  average: true     
+                theme: ios-dark-mode-blue-red
+                type: 'custom:mini-graph-card'
+              - aspect_ratio: 1/1
+                color: 'rgb(41, 158, 194)'
+                entity: climate.harvey_heizung
+                icon: 'hass:thermostat'
+                name: Harvey Heizung
+                show_state: true
+                size: 30%
+                state:
+                  - color: 'var(-- state-icon-active-color)'
+                    value: 'off'
+                  - color: 'var(--state-icon-color)'
+                    value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
+                styles:
+                  name:
+                    - text-transform: uppercase
+                    - font-size: 10px
+                  state:
+                    - text-transform: uppercase
+                    - font-size: 15px
+                    - font: bold
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+## Jilli AZ Heizung
+      - cards:
+          - name: Jilli AZ
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - cards:
+              - entities:
+                  - entity: sensor.jilli_az_innentemperatur
+                    name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                font_size: 80
+                hours_to_show: 24
+                line_width: 2
+                hour24: true
+                points_per_hour: 2
+                decimals: 0
+                show:
+                  animate: true
+#                  fill: true
+                  icon: false
+                  labels: false
+                  legend: false
+                  name: false
+                  graph: line
+                  extrema: true
+                  average: true     
+                theme: ios-dark-mode-blue-red
+                type: 'custom:mini-graph-card'
+              - aspect_ratio: 1/1
+                color: 'rgb(41, 158, 194)'
+                entity: climate.jilli_az_heizung
+                icon: 'hass:thermostat'
+                name: Jilli AZ Heizung
+                show_state: true
+                size: 30%
+                state:
+                  - color: 'var(-- state-icon-active-color)'
+                    value: 'off'
+                  - color: 'var(--state-icon-color)'
+                    value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
+                styles:
+                  name:
+                    - text-transform: uppercase
+                    - font-size: 10px
+                  state:
+                    - text-transform: uppercase
+                    - font-size: 15px
+                    - font: bold
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+## Jilli SZ Heizung
+      - cards:
+          - name: Jilli SZ
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - cards:
+              - entities:
+                  - entity: sensor.jilli_sz_innentemperatur
+                    name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                font_size: 80
+                hours_to_show: 24
+                line_width: 2
+                hour24: true
+                points_per_hour: 2
+                decimals: 0
+                show:
+                  animate: true
+#                  fill: true
+                  icon: false
+                  labels: false
+                  legend: false
+                  name: false
+                  graph: line
+                  extrema: true
+                  average: true     
+                theme: ios-dark-mode-blue-red
+                type: 'custom:mini-graph-card'
+              - aspect_ratio: 1/1
+                color: 'rgb(41, 158, 194)'
+                entity: climate.jilli_sz_heizung
+                icon: 'hass:thermostat'
+                name: Jilli SZ Heizung
+                show_state: true
+                size: 30%
+                state:
+                  - color: 'var(-- state-icon-active-color)'
+                    value: 'off'
+                  - color: 'var(--state-icon-color)'
+                    value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
+                styles:
+                  name:
+                    - text-transform: uppercase
+                    - font-size: 10px
+                  state:
+                    - text-transform: uppercase
+                    - font-size: 15px
+                    - font: bold
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+## Wohnzimmer Heizung
+      - cards:
+          - name: Wohnzimmer
+            styles:          
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - cards:
+              - entities:
+                  - entity: sensor.wohnzimmer_innentemperatur
+                    name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                font_size: 80
+                hours_to_show: 24
+                line_width: 2
+                hour24: true
+                points_per_hour: 2
+                decimals: 0
+                show:
+                  animate: true
+#                  fill: true
+                  icon: false
+                  labels: false
+                  legend: false
+                  name: false
+                  graph: line
+                  extrema: true
+                  average: true     
+                theme: ios-dark-mode-blue-red
+                type: 'custom:mini-graph-card'
+              - aspect_ratio: 1/1
+                color: 'rgb(41, 158, 194)'
+                entity: climate.wohnzimmer_heizung
+                icon: 'hass:thermostat'
+                name: Wohnzimmer Heizung
+                show_state: true
+                size: 30%
+                state:
+                  - color: 'var(-- state-icon-active-color)'
+                    value: 'off'
+                  - color: 'var(--state-icon-color)'
+                    value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
+                styles:
+                  name:
+                    - text-transform: uppercase
+                    - font-size: 10px
+                  state:
+                    - text-transform: uppercase
+                    - font-size: 15px
+                    - font: bold
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+## Badezimmer Heizung
+      - cards:
+          - name: Badezimmer
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - cards:
+              - entities:
+                  - entity: sensor.badezimmer_temperature
+                    name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                font_size: 80
+                hours_to_show: 24
+                line_width: 2
+                hour24: true
+                points_per_hour: 2
+                decimals: 0
+                show:
+                  animate: true
+#                  fill: true
+                  icon: false
+                  labels: false
+                  legend: false
+                  name: false
+                  graph: line
+                  extrema: true
+                  average: true     
+                theme: ios-dark-mode-blue-red
+                type: 'custom:mini-graph-card'
+              - aspect_ratio: 1/1
+                color: 'rgb(41, 158, 194)'
+                entity: climate.badezimmer_heizung
+                icon: 'hass:thermostat'
+                name: Wohnzimmer Heizung
+                show_state: true
+                size: 30%
+                state:
+                  - color: 'var(-- state-icon-active-color)'
+                    value: 'off'
+                  - color: 'var(--state-icon-color)'
+                    value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
+                styles:
+                  name:
+                    - text-transform: uppercase
+                    - font-size: 10px
+                  state:
+                    - text-transform: uppercase
+                    - font-size: 15px
+                    - font: bold
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
