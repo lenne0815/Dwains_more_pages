@@ -1,0 +1,176 @@
+    - type: custom:dwains-flexbox-card
+      padding: false
+      items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+      cards:
+        - type: weather-forecast
+          entity: weather.openweathermap
+##------------------------------------------------------------------------------
+    - type: custom:dwains-flexbox-card
+      padding: false
+      items_classes: 'col-xs-4 col-sm-4 col-md-4 col-lg-4'
+      cards:
+##------------------------------------------------------------------------------
+        - type: custom:button-card
+          show_state: true
+          entity: light.dreieck
+          state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)          
+          styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+          template: homepage_room
+##------------------------------------------------------------------------------
+        - type: custom:button-card
+          entity: light.esstisch
+          state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)          
+          show_state: true
+          styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+          template: homepage_room
+##------------------------------------------------------------------------------
+        - type: custom:button-card
+          entity: light.couch
+          state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)          
+          show_state: true
+          styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+          template: homepage_room
+##------------------------------------------------------------------------------
+    - type: custom:dwains-flexbox-card
+      padding: false
+      items_classes: 'col-xs-3 col-sm-3 col-md-3 col-lg-3'
+      cards:
+##------------------------------------------------------------------------------
+        - type: custom:button-card
+          entity: light.decke
+          state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)          
+          show_state: true
+          styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+          template: homepage_room
+##------------------------------------------------------------------------------
+        - type: custom:button-card
+          entity: switch.nodered_c69c68eb_83f078
+          state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)          
+          show_state: true
+          styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+          template: homepage_room
+##------------------------------------------------------------------------------
+        - type: custom:button-card
+          entity: switch.kamin_luefter_hauptschalter
+          state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)          
+          show_state: true
+          styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+          name: Abluft
+          template: homepage_room
+##------------------------------------------------------------------------------
+        - type: custom:button-card
+          entity: cover.rolladen_wohnzimmer
+          state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)          
+          tap_action:
+            action: more-info
+          hold_action:
+            action: more-info
+          show_state: true
+          styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+          name: Rolladen
+          template: homepage_room
+##------------------------------------------------------------------------------
+    - type: custom:dwains-flexbox-card
+      padding: false
+      items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+      cards:
+##------------------------------------------------------------------------------
+              - entities:
+                  - entity: sensor.wohnzimmer_innentemperatur
+                    name: Wohnzimmer
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                font_size: 80
+                hours_to_show: 24
+                line_width: 2
+                hour24: true
+                points_per_hour: 2
+                decimals: 0
+                show:
+                  animate: true
+                  icon: true
+                  labels: false
+                  legend: false
+                  name: true
+                  graph: line
+                  extrema: false
+                  average: false  
+                theme: ios-dark-mode-blue-red
+                type: 'custom:mini-graph-card'
