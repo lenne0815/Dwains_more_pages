@@ -1,0 +1,196 @@
+#sensor.kamin_abluft_temperature
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-6 col-sm-6 col-md-4'
+  cards:
+## Lasse Heizung
+      - cards:
+##------------------------------------------------------------------------------
+          - name: Servo
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - cards:
+              - entities:
+                  - entity: input_number.servo_control
+                    name: Servo
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                font_size: 80
+                hours_to_show: 24
+                line_width: 2
+                hour24: true
+                points_per_hour: 2
+                decimals: 0
+                show:
+                  animate: true
+#                  fill: true
+                  icon: false
+                  labels: false
+                  legend: false
+                  name: false
+                  graph: line
+                  extrema: true
+                  average: true     
+                theme: ios-dark-mode-blue-red
+                type: 'custom:mini-graph-card'
+            type: horizontal-stack
+        type: vertical-stack
+##------------------------------------------------------------------------------
+      - cards:
+          - name: Kamin core
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - cards:
+              - entities:
+                  - entity: sensor.kamin_core_temp
+                    name: Servo
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                font_size: 80
+                hours_to_show: 24
+                line_width: 2
+                hour24: true
+                points_per_hour: 2
+                decimals: 0
+                show:
+                  animate: true
+#                  fill: true
+                  icon: false
+                  labels: false
+                  legend: false
+                  name: false
+                  graph: line
+                  extrema: true
+                  average: true     
+                theme: ios-dark-mode-blue-red
+                type: 'custom:mini-graph-card'
+            type: horizontal-stack
+        type: vertical-stack
+##------------------------------------------------------------------------------
+      - cards:
+          - name: Kamin Abluft
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - cards:
+              - entities:
+                  - entity: sensor.kamin_abluft_temperature
+                    name: Temperature
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                font_size: 80
+                hours_to_show: 24
+                line_width: 2
+                hour24: true
+                points_per_hour: 2
+                decimals: 0
+                show:
+                  animate: true
+#                  fill: true
+                  icon: false
+                  labels: false
+                  legend: false
+                  name: false
+                  graph: line
+                  extrema: true
+                  average: true     
+                theme: ios-dark-mode-blue-red
+                type: 'custom:mini-graph-card'
+            type: horizontal-stack
+        type: vertical-stack
+##------------------------------------------------------------------------------
+      - entity: switch.nodered_c69c68eb_83f078
+        state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)          
+        template: homepage_room
+        icon: mdi:fire-alert
+        name: Anheizen
+        tap_action:
+          action: toggle
+          haptic: light
+        hold_action:
+          action: more-info
+          haptic: medium
+        show_state: true
+        styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+        type: custom:button-card
+##------------------------------------------------------------------------------
+      - entity: switch.kamin_luefter_hauptschalter
+        state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)          
+        template: homepage_room
+        icon: mdi:fan
+        name: Abluft 1/0
+        tap_action:
+          action: toggle
+          haptic: light
+        hold_action:
+          action: more-info
+          haptic: medium
+        show_state: true
+        styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+        type: custom:button-card
+##------------------------------------------------------------------------------
+      - entity: switch.nodered_edb35e26_54f28
+        state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)          
+        template: homepage_room
+        name: Kamin Eco mode
+        tap_action:
+          action: toggle
+          haptic: light
+        hold_action:
+          action: more-info
+          haptic: medium
+        show_state: true
+        styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+        type: custom:button-card
