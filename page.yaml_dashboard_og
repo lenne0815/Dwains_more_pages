@@ -1,0 +1,183 @@
+    - type: custom:dwains-flexbox-card
+      padding: false
+      items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+      cards:
+        - type: weather-forecast
+          entity: weather.openweathermap
+##--------------------------------------------------------
+    - type: custom:dwains-flexbox-card
+      padding: false
+      items_classes: 'col-xs-4 col-sm-4 col-md-4 col-lg-4'
+      cards:
+##--------------------------------------------------------
+        - type: custom:button-card
+          show_state: true
+          entity: light.lasse_nachtlicht
+          state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)
+          styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+          template: homepage_device
+##--------------------------------------------------------
+        - type: custom:button-card
+          entity: light.dimmable_light_1_2
+          state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)
+          show_state: true
+          styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+          template: homepage_room
+##--------------------------------------------------------
+        - type: custom:button-card
+          entity: light.kissen
+          state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)
+          show_state: true
+          styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+          template: homepage_room
+##--------------------------------------------------------
+    - type: custom:dwains-flexbox-card
+      padding: false
+      items_classes: 'col-xs-6 col-sm-6 col-md-6 col-lg-6'
+      cards:
+        - type: custom:button-card
+          show_state: true
+          entity: cover.rolladen_lasse
+          styles:
+            icon:
+             - color: var(--dwains-theme-accent)
+             - height: 150px
+             - width: 150px
+             - primary: var(--dwains-theme-accent)
+             - secondary: var(--dwains-theme-primary)
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+          template: homepage_device
+        - type: custom:button-card
+          entity: cover.rolladen_jill
+          show_state: true
+          styles:
+            icon:
+             - color: var(--dwains-theme-accent)
+             - height: 150px
+             - width: 150px
+             - primary: var(--dwains-theme-accent)
+             - secondary: var(--dwains-theme-primary)
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+          template: homepage_room
+##--------------------------------------------------------
+    - type: custom:dwains-flexbox-card
+      padding: false
+      items_classes: 'col-xs-4 col-sm-4 col-md-4 col-lg-4'
+      cards:
+        - type: custom:button-card
+          show_state: true
+          entity: light.color_temperature_light_1
+          state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)
+          styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+          template: homepage_device
+##--------------------------------------------------------
+        - type: custom:button-card
+          entity: light.gallery
+          state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)
+          show_state: true
+          styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+          template: homepage_room
+##--------------------------------------------------------
+        - type: custom:button-card
+          entity: switch.shelly_fakebutton_3
+          state:
+            - value: 'off'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-off)
+            - value: 'unavailable'
+              styles:
+                icon:
+                 - color: var(--dwains-theme-unavailable)
+          show_state: true
+          styles:
+            state:
+             - font-size: 13px
+             - color: var(--dwains-theme-accent)
+          template: homepage_room
+##--------------------------------------------------------          
+    - type: custom:dwains-flexbox-card
+      padding: false
+      items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+      cards:
+              - entities:
+                  - entity: sensor.average_og_temperatur
+                    name: Obergeschoss
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                font_size: 80
+                hours_to_show: 24
+                line_width: 2
+                hour24: true
+                points_per_hour: 2
+                decimals: 0
+                show:
+                  animate: true
+                  icon: true
+                  labels: false
+                  legend: false
+                  name: true
+                  graph: line
+                  extrema: false
+                  average: false  
+                theme: ios-dark-mode-blue-red
+                type: 'custom:mini-graph-card'
